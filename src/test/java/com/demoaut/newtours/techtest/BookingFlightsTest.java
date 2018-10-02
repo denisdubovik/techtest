@@ -3,6 +3,7 @@ package com.demoaut.newtours.techtest;
 import com.demoaut.newtours.techtest.pages.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.WebDriver;
@@ -70,6 +71,7 @@ class BookingFlightsTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"chrome", "firefox"})
+    @DisplayName("✈ Booking flight test ✈")
     void bookingFlight(String browser) {
 
         if(browser.equals("chrome")) {
@@ -78,7 +80,7 @@ class BookingFlightsTest {
         else if(browser.equals("firefox")) {
            driver = createGeckoDriver();
         }
-        driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         driver.get("http://newtours.demoaut.com/");
 
